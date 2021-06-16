@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_delivery_app_ui/components/floating_rouded_plus_button.dart';
 import 'package:food_delivery_app_ui/components/food_category.dart';
-import 'package:food_delivery_app_ui/config/colors.dart';
+import 'package:food_delivery_app_ui/components/food_item_card.dart';
 import 'package:food_delivery_app_ui/config/typography.dart';
+import 'package:food_delivery_app_ui/views/food_item_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -48,7 +49,41 @@ class HomeView extends StatelessWidget {
               child: TextField(
                 decoration: searchInputDecoration,
               ),
-            )
+            ),
+            SizedBox(height: 20),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: <Widget>[
+                  FoodItemCard(
+                    press: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return FoodItemView();
+                        }),
+                      );
+                    },
+                    title: "Vegan salad bowl",
+                    image: "assets/images/image_1.png",
+                    price: 20,
+                    calories: "420Kcal",
+                    description:
+                        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+                  ),
+                  FoodItemCard(
+                    press: () {},
+                    title: "Vegan salad bowl",
+                    image: "assets/images/image_2.png",
+                    price: 20,
+                    calories: "420Kcal",
+                    description:
+                        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+                  ),
+                  SizedBox(width: 20),
+                ],
+              ),
+            ),
           ],
         ),
       ),
